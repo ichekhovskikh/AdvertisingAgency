@@ -45,6 +45,7 @@ public class Response<T> {
 
     public enum Status {
         SUCCESS(200),
+        REDIRECT(302),
         BAD_REQUEST_ERROR(400),
         UNAUTHORIZED_ERROR(401);
 

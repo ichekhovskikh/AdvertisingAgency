@@ -18,5 +18,7 @@
         <mapping class="com.chekh.entity.ContractEntity"/>
         <mapping class="com.chekh.entity.PassportEntity"/>
         <mapping class="com.chekh.entity.SellerEntity"/>
+        <mapping class="com.chekh.entity.UserRoleEntity"/>
+        <mapping class="com.chekh.entity.UserEntity"/>
     </session-factory>
 </hibernate-configuration>

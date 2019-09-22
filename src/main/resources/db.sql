@@ -49,6 +49,19 @@ CREATE TABLE "contract"
     "check_id"      bigint
 );
 
+CREATE TABLE "user_role"
+(
+    "user_role_id" serial  NOT NULL PRIMARY KEY,
+    "roleName"     varchar NOT NULL
+);
+
+CREATE TABLE "user"
+(
+    "login"        varchar NOT NULL PRIMARY KEY,
+    "password"     varchar NOT NULL,
+    "user_role_id" bigint
+);
+
 ALTER TABLE "contract"
     ADD FOREIGN KEY ("ad_id") REFERENCES "ad" ("ad_id");
 
@@ -73,3 +86,5 @@ ALTER TABLE "contract"
 ALTER TABLE "passport"
     ADD CONSTRAINT "passport_unique" UNIQUE ("series", "number");
 
+ALTER TABLE "user"
+    ADD FOREIGN KEY ("user_role_id") REFERENCES "user_role" ("user_role_id");
