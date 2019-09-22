@@ -1,5 +1,6 @@
 package com.chekh.security.service;
 
+import com.chekh.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,13 +25,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-//        UserEntity user = userService.getUser(login);
-//        if(user == null) throw new UsernameNotFoundException(login + " not found");
+        UserEntity user = userService.getUser(login);
+        if(user == null) throw new UsernameNotFoundException(login + " not found");
 
         Set<GrantedAuthority> roles = new HashSet<>();
-//        roles.add(new SimpleGrantedAuthority(user.getUserRole().getRoleName()));
-//        return new User(user.getLogin(), user.getPassword(), roles);
-        roles.add(new SimpleGrantedAuthority("ROLE_USER"));
-        return new User("w", "w", roles);
+        roles.add(new SimpleGrantedAuthority(user.getUserRole().getRoleName()));
+        return new User(user.getLogin(), user.getPassword(), roles);
     }
 }

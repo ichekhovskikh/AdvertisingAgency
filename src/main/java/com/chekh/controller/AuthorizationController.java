@@ -1,6 +1,7 @@
 package com.chekh.controller;
 
 import com.chekh.entity.UserEntity;
+import com.chekh.entity.UserRoleEntity;
 import com.chekh.rest.Request;
 import com.chekh.rest.Response;
 import com.chekh.rest.SimpleResponse;
@@ -47,7 +48,9 @@ public class AuthorizationController {
     @PostMapping("/register")
     public SimpleResponse register(@RequestBody Request<UserEntity> request) {
         try {
-            userService.addUser(request.getData());
+            UserEntity user = request.getData();
+            user.setUserRoleId(UserRoleEntity.Role.USER_ROLE.getId());
+            userService.addUser(user);
             return new SimpleResponse(Response.Status.SUCCESS.getCode());
         } catch (Exception e) {
             return new SimpleResponse(Response.Status.BAD_REQUEST_ERROR.getCode(), e.getMessage());

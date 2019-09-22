@@ -52,7 +52,7 @@ CREATE TABLE "contract"
 CREATE TABLE "user_role"
 (
     "user_role_id" serial  NOT NULL PRIMARY KEY,
-    "roleName"     varchar NOT NULL
+    "role_name"     varchar NOT NULL
 );
 
 CREATE TABLE "user"
@@ -78,7 +78,7 @@ ALTER TABLE "contract"
     ADD FOREIGN KEY ("advertiser_id") REFERENCES "advertiser" ("advertiser_id");
 
 ALTER TABLE "seller"
-    ADD FOREIGN KEY ("seller_id") REFERENCES "passport" ("passport_id");
+    ADD FOREIGN KEY ("passport_id") REFERENCES "passport" ("passport_id");
 
 ALTER TABLE "contract"
     ADD CONSTRAINT "contract_unique" UNIQUE ("advertiser_id", "ad_id", "seller_id", "check_id");

@@ -42,3 +42,6 @@ values (0, 0, 0, 0, 0),
        (4, 4, 1, 1, 4),
        (5, 2, 0, 2, 5);
 
+INSERT INTO user_role(user_role_id, role_name)
+values (0, 'USER'),
+       (1, 'ADMIN');

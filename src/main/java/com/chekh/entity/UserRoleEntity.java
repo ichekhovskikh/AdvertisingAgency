@@ -20,7 +20,7 @@ public class UserRoleEntity {
     }
 
     @Basic
-    @Column(name = "roleName", nullable = false, length = -1)
+    @Column(name = "role_name", nullable = false, length = -1)
     public String getRoleName() {
         return roleName;
     }
@@ -43,5 +43,26 @@ public class UserRoleEntity {
         int result = userRoleId != null ? userRoleId.hashCode() : 0;
         result = 31 * result + (roleName != null ? roleName.hashCode() : 0);
         return result;
+    }
+
+    public enum Role {
+        USER_ROLE(0, "USER"),
+        ADMIN(0, "ADMIN");
+
+        private int id;
+        private String name;
+
+        Role(int id, String name) {
+            this.id = id;
+            this.name = name;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public String getName() {
+            return name;
+        }
     }
 }
