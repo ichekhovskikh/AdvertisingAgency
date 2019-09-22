@@ -1,7 +1,6 @@
 package com.chekh.dao;
 
 import com.chekh.entity.PassportEntity;
-import org.hibernate.Session;
 import com.chekh.util.HibernateHelper;
 import org.springframework.stereotype.Component;
 
@@ -9,30 +8,26 @@ import java.util.List;
 
 @Component
 public class PassportDao implements EntityDao<PassportEntity> {
-    private Session session;
-
-    public PassportDao(Session session) {
-        this.session = session;
-    }
-
-    @Override
-    public void close() {
-        session.close();
-    }
 
     @Override
     public List<PassportEntity> getAll() {
-        return session.createNativeQuery("SELECT * FROM passport", PassportEntity.class).getResultList();
+        return HibernateHelper.inTransaction((session) -> {
+            return session.createNativeQuery("SELECT * FROM passport", PassportEntity.class).getResultList();
+        });
     }
 
     @Override
     public PassportEntity get(long id) {
-        return session.get(PassportEntity.class, id);
+        return HibernateHelper.inTransaction((session) -> {
+            return session.get(PassportEntity.class, id);
+        });
     }
 
     @Override
     public void add(PassportEntity passport) {
-        HibernateHelper.inTransaction(session, (session) -> session.save(passport));
+        HibernateHelper.inTransaction((session) -> {
+            session.save(passport);
+        });
     }
 
     @Override
@@ -42,19 +37,15 @@ public class PassportDao implements EntityDao<PassportEntity> {
 
     @Override
     public void remove(PassportEntity passport) {
-        HibernateHelper.inTransaction(session, (session) -> session.remove(passport));
-    }
-
-    @Override
-    public void update(PassportEntity passport) {
-        HibernateHelper.inTransaction(session, (session) -> {
-            session.clear();
-            session.update(passport);
+        HibernateHelper.inTransaction((session) -> {
+            session.remove(passport);
         });
     }
 
     @Override
-    public void rollback() {
-        session.getTransaction().rollback();
+    public void update(PassportEntity passport) {
+        HibernateHelper.inTransaction((session) -> {
+            session.update(passport);
+        });
     }
 }

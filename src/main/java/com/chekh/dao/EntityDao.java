@@ -9,6 +9,4 @@ public interface EntityDao<T> {
     void remove(long id);
     void remove(T entity);
     void update(T entity);
-    void rollback();
-    void close();
 }

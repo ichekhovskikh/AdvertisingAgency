@@ -14,7 +14,7 @@ public class SellerEntity {
 
     @Id
     @Column(name = "seller_id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getSellerId() {
         return sellerId;
     }
@@ -74,8 +74,8 @@ public class SellerEntity {
         return result;
     }
 
-    @OneToOne
-    @JoinColumn(name = "seller_id", referencedColumnName = "passport_id", nullable = false)
+    @ManyToOne(optional=false)
+    @JoinColumn(name = "passport_id", referencedColumnName = "passport_id", insertable=false, updatable=false)
     public PassportEntity getPassport() {
         return passport;
     }

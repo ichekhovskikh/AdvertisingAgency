@@ -31,7 +31,7 @@ public class UserEntity {
         this.password = password;
     }
 
-    @Id
+    @Basic
     @Column(name = "user_role_id", nullable = false)
     public Integer getUserRoleId() {
         return userRoleId;

@@ -2,6 +2,7 @@ package com.chekh.repository;
 
 import com.chekh.dao.EntityDao;
 import com.chekh.entity.ContractEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -10,13 +11,9 @@ import java.util.List;
 public class ContractRepository implements EntityRepository<ContractEntity> {
     private EntityDao<ContractEntity> dao;
 
+    @Autowired
     public ContractRepository(EntityDao<ContractEntity> dao) {
         this.dao = dao;
-    }
-
-    @Override
-    public void close() {
-        dao.close();
     }
 
     @Override
@@ -47,10 +44,5 @@ public class ContractRepository implements EntityRepository<ContractEntity> {
     @Override
     public void update(ContractEntity contract) {
         dao.update(contract);
-    }
-
-    @Override
-    public void rollback() {
-        dao.rollback();
     }
 }

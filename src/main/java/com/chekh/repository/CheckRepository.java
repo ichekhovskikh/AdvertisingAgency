@@ -2,6 +2,7 @@ package com.chekh.repository;
 
 import com.chekh.dao.EntityDao;
 import com.chekh.entity.CheckEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -10,13 +11,9 @@ import java.util.List;
 public class CheckRepository implements EntityRepository<CheckEntity> {
     private EntityDao<CheckEntity> dao;
 
+    @Autowired
     public CheckRepository(EntityDao<CheckEntity> dao) {
         this.dao = dao;
-    }
-
-    @Override
-    public void close() {
-        dao.close();
     }
 
     @Override
@@ -47,10 +44,5 @@ public class CheckRepository implements EntityRepository<CheckEntity> {
     @Override
     public void update(CheckEntity check) {
         dao.update(check);
-    }
-
-    @Override
-    public void rollback() {
-        dao.rollback();
     }
 }

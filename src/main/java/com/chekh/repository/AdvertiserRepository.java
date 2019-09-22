@@ -2,6 +2,7 @@ package com.chekh.repository;
 
 import com.chekh.dao.EntityDao;
 import com.chekh.entity.AdvertiserEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -10,13 +11,9 @@ import java.util.List;
 public class AdvertiserRepository implements EntityRepository<AdvertiserEntity> {
     private EntityDao<AdvertiserEntity> dao;
 
+    @Autowired
     public AdvertiserRepository(EntityDao<AdvertiserEntity> dao) {
         this.dao = dao;
-    }
-
-    @Override
-    public void close() {
-        dao.close();
     }
 
     @Override
@@ -47,10 +44,5 @@ public class AdvertiserRepository implements EntityRepository<AdvertiserEntity> 
     @Override
     public void update(AdvertiserEntity advertiser) {
         dao.update(advertiser);
-    }
-
-    @Override
-    public void rollback() {
-        dao.rollback();
     }
 }
