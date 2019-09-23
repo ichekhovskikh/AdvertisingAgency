@@ -1,48 +1,16 @@
 package com.chekh.repository;
 
-import com.chekh.dao.EntityDao;
 import com.chekh.entity.AdEntity;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public class AdRepository implements EntityRepository<AdEntity> {
-    private EntityDao<AdEntity> dao;
-
-    @Autowired
-    public AdRepository(EntityDao<AdEntity> dao) {
-        this.dao = dao;
-    }
-
-    @Override
-    public List<AdEntity> getAll() {
-        return dao.getAll();
-    }
-
-    @Override
-    public AdEntity get(long id) {
-        return dao.get(id);
-    }
-
-    @Override
-    public void add(AdEntity ad) {
-        dao.add(ad);
-    }
-
-    @Override
-    public void remove(long id) {
-        dao.remove(id);
-    }
-
-    @Override
-    public void remove(AdEntity ad) {
-        dao.remove(ad);
-    }
-
-    @Override
-    public void update(AdEntity ad) {
-        dao.update(ad);
-    }
+public interface AdRepository extends CrudRepository<AdEntity, Long> {
+    @Query("FROM AdEntity ad WHERE UPPER(ad.adName) LIKE UPPER(concat('%', :adName, '%'))")
+    List<AdEntity> search(@Param("adName") String search, Sort sort);
 }

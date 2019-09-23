@@ -16,7 +16,7 @@ public class AdvertiserEntity {
 
     @Id
     @Column(name = "advertiser_id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getAdvertiserId() {
         return advertiserId;
     }
@@ -99,8 +99,8 @@ public class AdvertiserEntity {
         return result;
     }
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "passport_id", referencedColumnName = "passport_id", insertable=false, updatable=false)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "passport_id", referencedColumnName = "passport_id", insertable = false, updatable = false)
     public PassportEntity getPassport() {
         return passport;
     }

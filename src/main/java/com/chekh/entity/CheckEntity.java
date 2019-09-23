@@ -13,7 +13,7 @@ public class CheckEntity {
 
     @Id
     @Column(name = "check_id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getCheckId() {
         return checkId;
     }

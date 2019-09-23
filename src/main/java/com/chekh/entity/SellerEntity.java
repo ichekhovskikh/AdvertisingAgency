@@ -74,8 +74,8 @@ public class SellerEntity {
         return result;
     }
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "passport_id", referencedColumnName = "passport_id", insertable=false, updatable=false)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "passport_id", referencedColumnName = "passport_id", insertable = false, updatable = false)
     public PassportEntity getPassport() {
         return passport;
     }

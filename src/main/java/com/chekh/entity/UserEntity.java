@@ -59,8 +59,8 @@ public class UserEntity {
         return result;
     }
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "user_role_id", referencedColumnName = "user_role_id", insertable=false, updatable=false)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_role_id", referencedColumnName = "user_role_id", insertable = false, updatable = false)
     public UserRoleEntity getUserRole() {
         return userRole;
     }

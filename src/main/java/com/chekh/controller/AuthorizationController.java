@@ -2,22 +2,22 @@ package com.chekh.controller;
 
 import com.chekh.entity.UserEntity;
 import com.chekh.entity.UserRoleEntity;
+import com.chekh.repository.UserRepository;
 import com.chekh.rest.Request;
 import com.chekh.rest.Response;
 import com.chekh.rest.SimpleResponse;
-import com.chekh.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/")
 public class AuthorizationController {
-
-    private UserService userService;
+    private UserRepository repository;
 
     @Autowired
-    public AuthorizationController(UserService userService) {
-        this.userService = userService;
+    public AuthorizationController(UserRepository repository) {
+        this.repository = repository;
     }
 
     @GetMapping("/login")
@@ -50,7 +50,7 @@ public class AuthorizationController {
         try {
             UserEntity user = request.getData();
             user.setUserRoleId(UserRoleEntity.Role.USER_ROLE.getId());
-            userService.addUser(user);
+            repository.save(user);
             return new SimpleResponse(Response.Status.SUCCESS.getCode());
         } catch (Exception e) {
             return new SimpleResponse(Response.Status.BAD_REQUEST_ERROR.getCode(), e.getMessage());

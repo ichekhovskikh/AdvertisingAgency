@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/src/main/java/com/chekh/dao/AdDao.java" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/chekh/dao/AdvertiserDao.java" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/chekh/dao/CheckDao.java" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/chekh/dao/ContractDao.java" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/chekh/dao/PassportDao.java" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/chekh/dao/SellerDao.java" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/chekh/dao/UserDao.java" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/src/main/resources/db.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/src/main/resources/insert.sql" dialect="PostgreSQL" />
   </component>

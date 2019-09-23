@@ -13,7 +13,7 @@ public class PassportEntity {
 
     @Id
     @Column(name = "passport_id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getPassportId() {
         return passportId;
     }

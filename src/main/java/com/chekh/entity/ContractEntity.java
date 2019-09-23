@@ -18,7 +18,7 @@ public class ContractEntity {
 
     @Id
     @Column(name = "contract_id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getContractId() {
         return contractId;
     }
@@ -90,8 +90,8 @@ public class ContractEntity {
         return result;
     }
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "advertiser_id", referencedColumnName = "advertiser_id", insertable=false, updatable=false)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "advertiser_id", referencedColumnName = "advertiser_id", insertable = false, updatable = false)
     public AdvertiserEntity getAdvertiser() {
         return advertiser;
     }
@@ -100,8 +100,8 @@ public class ContractEntity {
         this.advertiser = advertiser;
     }
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "ad_id", referencedColumnName = "ad_id", insertable=false, updatable=false)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "ad_id", referencedColumnName = "ad_id", insertable = false, updatable = false)
     public AdEntity getAd() {
         return ad;
     }
@@ -110,8 +110,8 @@ public class ContractEntity {
         this.ad = ad;
     }
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "seller_id", referencedColumnName = "seller_id", insertable=false, updatable=false)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "seller_id", referencedColumnName = "seller_id", insertable = false, updatable = false)
     public SellerEntity getSeller() {
         return seller;
     }
@@ -120,8 +120,8 @@ public class ContractEntity {
         this.seller = seller;
     }
 
-    @ManyToOne(optional=false)
-    @JoinColumn(name = "check_id", referencedColumnName = "check_id", insertable=false, updatable=false)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "check_id", referencedColumnName = "check_id", insertable = false, updatable = false)
     public CheckEntity getCheck() {
         return check;
     }
